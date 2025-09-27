@@ -102,6 +102,8 @@ REACT_APP_API_URL=http://localhost:8000
 
 
 
+## 6. Project Structure
+
 src/
  ├─ api/
  │   └─ axiosInstance.js       # Axios instance with JWT interceptor
@@ -110,10 +112,12 @@ src/
  │   ├─ customerSlice.js       # Customer CRUD
  │   ├─ leadSlice.js           # Lead CRUD
  │   ├─ productSlice.js        # Product CRUD
- │   
+ │   └─ store.js               # Redux store setup
  ├─ components/                # Reusable components (forms, tables, headers)
  ├─ pages/                     # Page-level components (Dashboard, Customers, Leads, Products)
- |└─ App.jsx                    # Main app file
+ ├─ App.jsx                    # Main app file
+ └─ index.js                   # React entry point
+
   
 
 
