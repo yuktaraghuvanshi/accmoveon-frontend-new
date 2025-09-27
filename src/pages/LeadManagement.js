@@ -48,6 +48,8 @@ const LeadManagement = () => {
       return;
     }
 
+    console.log('Submitting lead:', formData); // Debug request payload
+
     if (editingId) {
       dispatch(updateLead({ id: editingId, lead: formData }));
     } else {
@@ -75,6 +77,17 @@ const LeadManagement = () => {
     if (window.confirm('Are you sure you want to delete this lead?')) {
       dispatch(deleteLead(id));
     }
+  };
+
+  // Helper to get names from IDs
+  const getCustomerName = (id) => {
+    const customer = customers.find((c) => c.customer_id === id);
+    return customer ? `${customer.first_name} ${customer.last_name || ''}` : id;
+  };
+
+  const getProductName = (id) => {
+    const product = products.find((p) => p.product_id === id);
+    return product ? product.display_name : id;
   };
 
   return (
@@ -182,10 +195,16 @@ const LeadManagement = () => {
           <tbody>
             {leads.map((l) => (
               <tr key={l.lead_id}>
-                <td>{l.customer_id}</td>
-                <td>{l.product_id}</td>
+                <td>{getCustomerName(l.customer_id)}</td>
+                <td>{getProductName(l.product_id)}</td>
                 <td>{l.status}</td>
-                <td>{l.priority}</td>
+                <td>
+                  {l.priority === 1
+                    ? 'High'
+                    : l.priority === 2
+                    ? 'Normal'
+                    : 'Low'}
+                </td>
                 <td>{l.notes || '-'}</td>
                 <td>
                   <button
