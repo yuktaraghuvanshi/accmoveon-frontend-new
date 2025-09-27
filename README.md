@@ -68,3 +68,76 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+--------------------------------------------------------------------------------------------
+
+# BFSI Sales Portal — Frontend (Shreed Vyas & Yukta Raghuvanshi)
+
+**Project**: BFSI Sales & Lead Portal  
+**Assignment**: Assessment Project (AccMoveOn Technologies)  
+**Submitted by**: Shreed Vyas & Yukta Raghuvanshi  
+**Repo**: [Frontend GitHub Repo](https://github.com/yuktaraghuvanshi/accmoveon-frontend-new.git)  
+**Assignment Date**: 19-Sep-2025  
+**Submission Date**: 26-Sep-2025
+
+---
+
+## 1. Project Overview
+The frontend of BFSI Sales Portal is built using React.js with Redux for state management. It allows users to login, manage customers, leads, and products, and view dashboard metrics with real-time data fetched from the FastAPI backend.
+
+---
+
+## 2. Prerequisites
+- Node.js 16+  
+- NPM 8+  
+- A running instance of the backend API (`http://localhost:8000`)  
+
+---
+
+## 3. Environment Variables
+Create a `.env` file in the frontend root with:
+
+```env
+REACT_APP_API_URL=http://localhost:8000
+
+
+
+src/
+ ├─ api/
+ │   └─ axiosInstance.js       # Axios instance with JWT interceptor
+ ├─ store/
+ │   ├─ authSlice.js           # Login/logout, JWT token
+ │   ├─ customerSlice.js       # Customer CRUD
+ │   ├─ leadSlice.js           # Lead CRUD
+ │   ├─ productSlice.js        # Product CRUD
+ │   
+ ├─ components/                # Reusable components (forms, tables, headers)
+ ├─ pages/                     # Page-level components (Dashboard, Customers, Leads, Products)
+ |└─ App.jsx                    # Main app file
+  
+
+
+
+  ## 5. API Endpoints (brief)
+
+The frontend interacts with the following backend API endpoints via Axios:
+
+| Module    | Method | Endpoint           | Description                  |
+|-----------|--------|------------------|------------------------------|
+| Users     | POST   | /users/login      | Login and get JWT token      |
+| Users     | POST   | /users/refresh    | Refresh access token         |
+| Users     | POST   | /users/logout     | Logout                       |
+| Users     | POST   | /users/           | Create new user              |
+| Users     | GET    | /users/           | List all users               |
+| Customers | POST   | /customers/       | Create a customer            |
+| Customers | GET    | /customers/       | List customers               |
+| Customers | PUT    | /customers/{id}   | Update customer              |
+| Customers | DELETE | /customers/{id}   | Delete customer              |
+| Leads     | POST   | /leads/           | Create a lead                |
+| Leads     | GET    | /leads/           | List leads                   |
+| Leads     | PUT    | /leads/{id}       | Update lead                  |
+| Leads     | DELETE | /leads/{id}       | Delete lead                  |
+| Products  | POST   | /products/        | Create a product             |
+| Products  | GET    | /products/        | List products                |
+| Products  | PUT    | /products/{id}    | Update product               |
+| Products  | DELETE | /products/{id}    | Delete product               |
